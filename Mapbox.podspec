@@ -1,6 +1,6 @@
 Pod::Spec.new do |m|
 
-  m.name    = 'MapBox'
+  m.name    = 'Mapbox'
   m.version = '1.0.0'
 
   m.summary     = 'Open source alternative to MapKit.'
@@ -22,6 +22,7 @@ Pod::Spec.new do |m|
   m.prefix_header_file = 'MapView/MapView_Prefix.pch'
 
   m.pre_install do |pod, target_definition|
+    Dir.mkdir(pod.root)
     Dir.chdir(pod.root) do
       command = "xcodebuild -project MapView/MapView.xcodeproj -target Resources CONFIGURATION_BUILD_DIR=../Resources 2>&1 > /dev/null"
       unless system(command)
